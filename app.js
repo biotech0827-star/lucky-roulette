@@ -172,15 +172,15 @@ function drawWheel(rotationAngle) {
   ctx.strokeStyle = '#FFAEC1';
   ctx.stroke();
 
-  // 3. Draw Stars/Sparkles on the Winning 5% sector to make it look extra premium!
+  // 3. Draw Stars/Sparkles on the Winning 5% sector (Pink Sector)
   ctx.save();
-  ctx.rotate((351 * Math.PI) / 180); // Center of 5% slice (342 to 360)
+  ctx.rotate((351 * Math.PI) / 180); // Rotate to center of 5% slice
   ctx.fillStyle = '#FFD25A'; // Golden stars
-  drawStar(0, -r + 60, 5, 16, 8); // Scaled up star coordinates
+  drawStar(r * 0.75, 0, 5, 14, 7); // Draw along the positive X-axis (inside pink wedge)
   ctx.restore();
 
   // 4. Draw Sector Text
-  // Draw '꽝' in the 95% sector
+  // Draw '꽝' in the 95% sector (Blue Sector)
   ctx.save();
   // Rotate to the center of the 95% sector: (0 + 342) / 2 = 171 degrees
   ctx.rotate((171 * Math.PI) / 180);
@@ -188,18 +188,18 @@ function drawWheel(rotationAngle) {
   ctx.font = '48px "Jua", sans-serif'; // Scaled up font size
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('꽝', 0, -r / 2);
+  ctx.fillText('꽝', r * 0.5, 0); // Draw along the positive X-axis (inside blue wedge)
   ctx.restore();
   
-  // Draw '당첨' in the 5% sector
+  // Draw '당첨' in the 5% sector (Pink Sector)
   ctx.save();
   // Rotate to the center of the 5% sector: (342 + 360) / 2 = 351 degrees
   ctx.rotate((351 * Math.PI) / 180);
   ctx.fillStyle = '#FFFFFF';
-  ctx.font = '32px "Jua", sans-serif'; // Scaled up font size to fit wedge perfectly
+  ctx.font = '24px "Jua", sans-serif'; // Scale down slightly to fit 18-degree wedge perfectly
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('당첨', 0, -r / 2 - 15);
+  ctx.fillText('당첨', r * 0.45, 0); // Draw along the positive X-axis (inside pink wedge)
   ctx.restore();
 
   // 5. Draw decorative golden pins around the edge (one every 30 degrees)
