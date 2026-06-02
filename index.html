@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍀 럭키 팡팡! 원형 룰렛 이벤트 🍀</title>
+  <!-- Google Fonts for cute rounded Korean & English typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Floating background decorations -->
+  <div class="bubble bubble-1"></div>
+  <div class="bubble bubble-2"></div>
+  <div class="bubble bubble-3"></div>
+  <div class="bubble bubble-4"></div>
+  <div class="bubble bubble-5"></div>
+
+  <main class="app-container" id="mainAppContainer">
+    <!-- Header section -->
+    <header class="header-card" id="headerCard">
+      <div class="badge" id="eventBadge">SPECIAL EVENT</div>
+      <h1 class="main-title" id="mainTitle">🎈 럭키 팡팡 룰렛! 🎈</h1>
+      <p class="subtitle" id="subtitle">돌리면 행운이 팡팡 터져요! 단 5%의 주인공은 누구?</p>
+    </header>
+
+    <!-- Roulette section -->
+    <section class="roulette-section" id="rouletteSection">
+      <!-- Wheel Container -->
+      <div class="wheel-outer-wrapper" id="wheelOuterWrapper">
+        <!-- Cute ticker/pointer needle at the top -->
+        <div class="pointer-wrapper" id="pointerWrapper">
+          <div class="pointer-needle" id="pointerNeedle"></div>
+          <div class="pointer-cap"></div>
+        </div>
+        
+        <!-- Rotating roulette wheel -->
+        <div class="wheel-container" id="wheelContainer">
+          <canvas id="rouletteCanvas" width="480" height="480"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spin Control Section -->
+    <section class="control-section" id="controlSection">
+      <button class="spin-btn" id="spinButton" onclick="startSpin()">
+        <span class="btn-text">🌈 돌리기! 🌈</span>
+        <span class="btn-shadow"></span>
+      </button>
+      
+      <!-- Instant Quick status indicator -->
+      <div class="status-panel" id="statusPanel">
+        <span class="status-icon" id="statusIcon">🧸</span>
+        <span class="status-text" id="statusText">버튼을 눌러 룰렛을 돌려보세요!</span>
+      </div>
+    </section>
+
+    <!-- Spin History & Counter -->
+    <footer class="history-footer" id="historyFooter">
+      <div class="stat-box" id="spinCountBox">
+        <span class="stat-label">도전 횟수</span>
+        <span class="stat-val" id="totalSpins">0회</span>
+      </div>
+      <div class="stat-box" id="winCountBox">
+        <span class="stat-label">당첨 횟수</span>
+        <span class="stat-val win-color" id="winCount">0회</span>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Celebratory Overlay Canvas for Confetti -->
+  <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+
+  <!-- Beautiful Result Popup Modal -->
+  <div class="modal-overlay" id="resultModal">
+    <div class="modal-card" id="modalCard">
+      <div class="modal-decoration">✨</div>
+      <div class="modal-emoji" id="modalEmoji">🎉</div>
+      <h2 class="modal-title" id="modalTitle">축하합니다!</h2>
+      <p class="modal-desc" id="modalDesc">당첨 결과가 여기에 나타납니다.</p>
+      
+      <!-- Extra details details -->
+      <div class="modal-detail-box" id="modalDetailBox">
+        <span class="detail-accent" id="detailAccent">5%의 기적!</span>
+        <p class="detail-text" id="detailText">행운의 신이 당신과 함께합니다. 대박 선물을 받아가세요!</p>
+      </div>
+
+      <button class="modal-btn" id="modalCloseBtn" onclick="closeModal()">
+        <span>한 번 더 하기! 🧸</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
